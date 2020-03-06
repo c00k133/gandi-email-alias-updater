@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        title Axel Neergaard
+
+    body
+        center
+            form(method='GET')
+                input(type='text' name='alias')
+                button(type='submit' value='set' formaction='/set')
+                    | Set alias
+                button(type='submit' value='delete' formaction='/delete')
+                    | Delete alias
+
+            form(action='/list' method='GET')
+                button List aliases
+
+            if newAlias
+                p #{newAlias} successfully added!
+
+            if deleteAlias
+                p #{deleteAlias} successfully removed!
+
+            if error
+                p Could not perform operation
+
+            if aliases
+                p Aliases for #{address}:
+                each alias in aliases
+                    .alias #{alias}

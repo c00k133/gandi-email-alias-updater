@@ -7,8 +7,7 @@
     "gandi-email-aliases-creation": "create-email-aliases.js"
   },
   "scripts": {
-    "run": "export $(cat .env | xargs) && node ./bin/create-email-aliases.js",
-    "run-server": "export $(cat .env | xargs) && node ./bin/www"
+    "start": "export $(cat .env | xargs) && node ./bin/www"
   },
   "author": "",
   "license": "ISC",

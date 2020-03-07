@@ -1,4 +1,4 @@
-const { DOMAIN, MAILBOX_ID, APIKEY, PORT = 3000 } = process.env;
+const { DOMAIN, MAILBOX_ID, APIKEY } = process.env;
 
 const PATH = `/v5/email/mailboxes/${DOMAIN}/${MAILBOX_ID}`;
 
@@ -43,14 +43,6 @@ app.get('/delete', async (request, response) => {
         .patch(PATH, { aliases: newAliases })
         .then(() => response.render('index', { address, deleteAlias, aliases: newAliases }))
         .catch(() => response.render('index', { error: true }));
-});
-
-app.listen(PORT, error => {
-    if (error) {
-        return console.log('Something went wrong:', error);
-    }
-
-    console.log(`Server is listening on ${PORT}`);
 });
 
 module.exports = app;
